@@ -1,0 +1,714 @@
+@import 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+@import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+@import 'http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic .css'
+@import 'http://fonts.googleapis.com/css?family=Raleway:800,600,400,300,200 .css'
+
+@import placeholder
+
+
+$highlight = #FE8A35
+$open-sans = 'Open Sans', Helvetica, Arial, sans-serif
+$raleway = Raleway, Helvetica, Arial, sans-serif
+
+
+body
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+  color #86878b
+  font-family $open-sans
+  font-weight 400
+  font-size 14px
+  line-height 1.4
+
+.container
+  // @media ( min-width 768px )
+  //   width 750px
+  // @media ( min-width 992px )
+  //   width 970px
+  @media ( min-width 1200px )
+    width 1130px
+
+.ax
+  font-weight 700
+  color white
+.it
+  font-weight 300
+  color $highlight
+
+p
+  font-size 14px
+  margin-bottom 1.5em
+
+h1
+  margin 0
+  line-height 1.08
+
+h2
+  margin 0
+
+  color #2d2d2d
+  font-family $raleway
+  font-weight 400
+  font-size 36px
+  text-align center
+  text-transform uppercase
+  line-height 1.18
+
+h2:after
+  display block
+  height 2px
+  margin 23px auto 26px
+  width 64px
+
+  background-color $highlight
+
+  content ''
+
+h2 + p
+  text-align center
+  padding-bottom 100px
+
+h3
+  margin 0
+
+  color #2d2d2d
+  font-family $open-sans
+  font-size 20px
+  font-weight 700
+  line-height 1.5
+
+h3:after
+  display block
+  height 2px
+  margin 23px 1px 26px
+  width 64px
+
+  background-color $highlight
+
+  content ''
+
+h4
+  margin-bottom 7px
+
+  color #2d2d2d
+  font-family $open-sans
+  font-size 14px
+  font-weight 700
+
+ul
+  margin-top 42px
+
+button
+  border 2px solid white
+  margin-top 31px
+  padding 9px 30px
+
+  background-color #0000
+  color white
+
+  font-family $open-sans
+  font-size 15px
+
+.btn-orange
+  background-color $highlight
+  font-weight 600
+
+  border 0
+  border-radius 3px
+  box-shadow: 0.5px 0.866px 3px 0px #0005
+
+input, textarea
+  border none
+  border-radius 0
+  resize none
+  width 100%
+
+  margin 20px 0 17px
+  padding 5px 12px 5px 12px
+  border-bottom 1px solid #d2d2d2
+
+  font-size 14px
+  color #86878b
+
+  &:focus
+    outline none
+    border-color #d2d2d2
+  
+  +placeholder()
+    color #d2d2d2
+
+
+/* --- Navbar --- */
+
+.navbar
+  background-color black
+  border-radius 0px
+  border-width 0px
+  margin 0px
+
+  font-family $open-sans
+  font-size 14px
+  font-weight 600
+
+.navbar .container
+  min-height 70px
+
+.navbar-collapse
+  padding-right 8px
+
+.navbar-nav
+  @media ( max-width 768px )
+    margin 7.5px
+
+.navbar-header
+  min-height 70px
+
+.navbar-default .navbar-nav>li>a
+  @media ( min-width 768px )
+    padding 25px 23px 25px 24px
+
+  color white
+  opacity 0.69
+  &:hover
+    color white
+
+.navbar-brand
+  height 70px
+  padding 23px
+  padding-left 28px
+
+  font-family $open-sans
+  font-size 38px
+
+.navbar-toggle
+  margin 18px
+
+
+
+/* --- Header --- */
+
+header
+  height 641px
+  padding-bottom 110px
+  padding-top 110px
+
+  background-image url('header-bg.jpg')
+  background-position center
+  background-repeat no-repeat
+  background-size cover
+  color white
+
+header .container
+  padding-left 10px
+  padding-right 16px
+
+#brand
+  display block
+  font-family $open-sans
+
+  font-size 86px
+  line-height 0.65
+
+  margin-bottom 30px
+
+#sub-heading
+  font-family $raleway
+  text-transform uppercase
+  line-height 1.18
+  letter-spacing -0.3px
+
+#sub-heading:after
+  display block
+  height 2px
+  margin 33px 3px 35px
+  width 64px
+
+  background-color white
+
+  content '' 
+
+specialp()
+  color rgba(255, 255, 255, 0.6)
+  font-family $raleway
+  font-weight 200
+  font-size 16px
+  line-height 1.438
+  margin-bottom 10px
+
+header p                              
+  specialp()
+
+header p.row
+  padding-left 17px
+
+header #download-btn
+  margin-top 32px
+  margin-left 3px
+  padding-bottom 8px
+
+
+
+/* --- Trial Form --- */
+
+@media ( min-width 992px )
+  .trial-form-col
+    padding-left 2px
+    padding-right 16px
+
+#trial-form
+  background-color white
+  border-radius 8px
+  margin-top 30px
+
+.form
+  padding 11px 38px 10px
+
+
+#trial-form h3
+  display block
+  border-radius 4px 4px 0px 0px
+  text-align center
+  line-height 54px
+
+  background-color #f3f3f3
+
+  text-transform capitalize
+
+#trial-form h3:after
+  display none
+
+.highlight
+  text-transform uppercase
+  color $highlight
+
+#trial-form button
+  border 0
+  display block
+  width 100%
+  border-radius 0px 0px 4px 4px
+
+  background-color #FE994D
+  font-weight 600
+  line-height 36px
+
+
+
+/* --- Social Media section --- */
+
+#brand-bar
+  box-shadow 0 0.866px 3px 0 #000000A0
+  position relative
+  z-index 500
+
+#brand-bar .container
+  padding 0 0 0 27px
+  margin-right 142px
+
+#brand-bar .col-lg-4
+  padding 16px 0
+
+#brand-bar ul
+  padding 28px
+  padding-bottom 29px
+  padding-right 0
+  margin 0
+
+#brand-bar li
+  padding 0 18px
+
+#brand-bar .fa
+  font-size 48px
+  color #c9c9c9
+
+  &:hover
+    color #ddd
+
+#brand-bar p
+  margin-bottom 0
+
+#brand-bar h3:after
+  display none
+
+
+
+/* --- Feature 1 - tabs section --- */
+
+#feature-one
+  background-color #f1f1f1
+  .row
+    margin 146px 0 115px
+  img
+    float right
+    margin-top 20px
+  .container
+    padding 0
+
+[tab-selection]
+  padding-left 7px
+
+[select-tab]
+  height 110px
+  width 110px
+  margin 1px
+  padding 45px 34px 45px 35px
+
+  background-color #2d2d2d
+  color white
+  font-family $open-sans
+  font-weight 600
+  font-size 15px
+  text-transform uppercase
+  &:first-of-type
+    border-radius 3px 3px 0px 0px
+  &:last-of-type
+    border-radius 0px 0px 3px 3px
+
+  transition:background-color 0.8s ease-in
+
+[tab-page]
+  position absolute
+  transition:opacity 0.8s ease-in
+  margin-left 17px
+  margin-right 23px
+  margin-top 3px
+
+.active
+  background-color $highlight
+
+
+/* --- Feature 2 - sub list section --- */
+
+#feature-two
+  padding 100px 0 96px
+
+#feature-two img
+  margin-top -3px
+  margin-left -37px
+
+.shadow-img img
+  box-shadow 0px 20px 50px 5px #b7b7b7dd
+
+#feature-two .shadow-img
+  padding-top 30px
+  padding-left 65px
+
+#feature-two p
+  line-height 20px
+
+#feature-two ul
+  margin-top 43px
+
+#feature-two li
+  padding-left 41px
+  margin-bottom 36px
+
+.fa-li
+  height 40px
+  width 40px
+
+  border 2px solid
+  border-radius: 50%
+  margin-left 5px
+
+  color $highlight
+  font-size 16px
+
+.fa-li:before
+  position relative
+  top 11px
+
+
+
+/* --- Feature 3 - standard picture section --- */
+
+#feature-three
+  padding 100px 0 130px
+  background-color #f1f1f1
+
+#feature-three .container
+  @media ( min-width 1200px )
+    width 1150px
+
+#picture-section
+  padding-right 75px
+  @media ( min-width 1200px )
+    padding-left 25px
+
+#picture-section p
+  padding-left 1px
+  line-height 20px
+
+#feature-three .shadow-img
+  margin-top -9px
+  padding-right 0
+
+#feature-three img
+  float right
+  box-shadow 0px 20px 50px 3px #bababa
+
+
+/* --- Why This Is Awesome section --- */
+
+#about
+  padding 99px 0 23px
+
+#about .container
+  padding 0
+  width 1145px
+
+.our-process > div
+  padding 0 11px
+
+#about *
+  text-align center
+  margin 0 auto
+
+#about h2
+  letter-spacing -0.5px
+
+#about h3
+  padding-bottom 18px
+
+#about h3:after
+  display none
+
+#about p
+  padding-bottom 78px
+  line-height 20px
+
+#about .fa
+  border 2px solid
+  border-radius: 50%
+  width 70px
+  height 70px
+  display block
+
+  margin-bottom 23px
+
+  font-size 32px
+  color $highlight
+  
+  content ''
+
+#about .fa:before
+  position relative
+  top 16px
+
+
+
+/* --- Pricing Options section --- */
+
+#pricing
+  padding 99px 0 96px
+  
+  background-color #f1f1f1
+  text-align center
+
+#pricing p
+  padding-bottom 58px
+
+#pricing .container
+  padding 0 5px
+
+.pricing-box:first-of-type
+.pricing-box:last-of-type
+  margin-top 35px
+
+.pricing-box
+  padding 0 20px
+
+.pricing-box *
+  display block
+  width 100%
+
+.pricing-box h3
+.price
+small
+  background-color #2d2d2d
+
+small
+  line-height 25px
+  padding-bottom 15px
+
+  letter-spacing 0.5px
+  font-weight 600
+  font-size 14px
+  font-style italic
+
+.pricing-box h3
+  border-bottom 1px solid
+  line-height 59px
+
+  color white
+  font-weight 600
+
+.pricing-box h3:after
+  display none
+
+.price
+  padding-top 16px
+
+  color white
+  font-family $raleway
+  font-weight 600
+  font-size 94px
+
+  line-height 0.8em
+
+.price:before
+  content '$'
+  font-size 35px
+  
+.orange
+  padding 2px 0 3px
+  line-height 35px
+
+  background-color $highlight
+  color white
+  font-weight 600
+  text-transform uppercase
+
+.feature
+  line-height 40px
+  border-top 1px solid #f3f3f3
+
+  background-color white
+  text-transform uppercase
+
+
+
+/* --- Testimonials section --- */
+
+#reviews
+    padding 99px 0 101px
+
+#reviews .container
+  padding 0
+  @media ( min-width 1200px )
+    width 1148px
+
+#reviews h2
+  letter-spacing -0.4px
+
+#reviews p
+  padding-bottom 33px
+
+q
+  display block
+  border-radius 4px
+  padding 21px 12px 26px
+  position relative
+  margin-bottom 23px
+
+  background-color #f3f3f3
+  font-size 14px
+  font-style italic
+  font-weight 300
+  letter-spacing 0.6px
+  line-height 17px
+
+q:before
+  display none
+q:after
+  width 0
+  height 0
+  position absolute
+  bottom -15px
+  left 27px
+
+  border-style solid
+  border-width 15px 10px 0 10px
+  border-color #f3f3f3 transparent transparent transparent
+
+  content ''
+
+.testimonial
+  padding 0 60px
+
+.testimonial img
+  border-radius 50%
+  height 70px
+  width 70px
+
+  vertical-align middle
+  float left
+  padding-left 2px
+
+.testimonial span
+  display block
+
+.testimonial > span
+  padding 11px 0 0 88px
+
+.name
+  color #2d2d2d
+  font-weight 700
+  font-size 20px
+  padding-bottom 1px
+
+
+
+/* --- Custom section --- */
+
+#custom
+  padding 65px 0
+  background-image url( 'custom_section.jpg' )
+  background-position center
+  background-repeat no-repeat
+  background-size cover
+  color white
+
+  h2
+    color white
+  h2:after
+    background-color white
+
+
+#custom p
+  padding 0
+  specialp()
+
+button
+  margin-top 21px
+
+
+
+/* --- Contact section --- */
+
+#contact
+  padding 99px 0 82px
+
+#contact p
+  padding-bottom 39px
+
+#contact button
+  background-color #FE994D
+  font-weight 500
+  padding 11px 22px
+
+  border 0
+  border-radius 3px
+  box-shadow: 0.5px 0.866px 3px 0px #0005
+
+
+
+  /* --- Footer --- */
+
+footer
+  padding 10px
+
+  background-color black
+  font-size 12px
+  font-weight 300
+
+footer ul
+  margin 7px
+  
+footer a
+  color #c9c9c9
+  font-size 24px
+  padding 4px
+
+  &:hover
+    color white
