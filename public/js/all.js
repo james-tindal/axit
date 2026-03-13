@@ -40,8 +40,7 @@
       show(page);
     };
     const switchTab = ({ target }) => {
-      if (!target.hasAttribute("select-tab"))
-        return;
+      if (!target.hasAttribute("select-tab")) return;
       highlightSelector(target);
       showPage(target);
     };

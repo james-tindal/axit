@@ -7,13 +7,15 @@
     "build:css": "stylus stylus/style.styl -o public/css/ --print --sourcemap > public/css/style.css",
     "build:js": "esbuild js/entry.js --bundle --outfile=public/js/all.js --target=es2015 --sourcemap",
     "build": "npm run build:css && npm run build:js",
-    "start": "npm i --production & npx http-server"
-  },
-  "devDependencies": {
-    "esbuild": "^0.20.2",
-    "stylus": "^0.62.0"
+    "watch:css": "onchange 'stylus/**/*.styl' -- npm run build:css",
+    "watch:js": "onchange 'js/**/*.js' -- npm run build:js",
+    "watch": "npm run watch:css & npm run watch:js",
+    "dev": "npm run build && npm run watch & live-server public --open"
   },
   "dependencies": {
-    "http-server": "^0.8.5"
+    "esbuild": "^0.27.4",
+    "live-server": "^1.2.2",
+    "onchange": "^7.1.0",
+    "stylus": "^0.64.0"
   }
 }
