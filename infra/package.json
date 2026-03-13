@@ -1,0 +1,16 @@
+{
+  "name": "axit-infra",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "pulumi up"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^7.23.0",
+    "@pulumi/awsx": "^3.3.0",
+    "@pulumi/pulumi": "^3.226.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0"
+  }
+}
