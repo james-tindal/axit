@@ -79,17 +79,121 @@ const hostedZone = aws.route53.getZoneOutput({
   name: zoneDomain,
 })
 
-const record = new aws.route53.Record('axit-record', {
+const usEast1 = new aws.Provider('us-east-1', {
+  region: 'us-east-1',
+})
+
+const certificate = new aws.acm.Certificate('axit-certificate', {
+  domainName: domain,
+  validationMethod: 'DNS',
+}, { provider: usEast1 })
+
+const certValidation = certificate.domainValidationOptions[0]
+
+const certificateValidationRecord = new aws.route53.Record('cert-validation', {
+  zoneId: hostedZone.zoneId,
+  name: certValidation.resourceRecordName,
+  type: certValidation.resourceRecordType,
+  records: [certValidation.resourceRecordValue],
+  ttl: 300,
+})
+
+const certificateValidation = new aws.acm.CertificateValidation('cert-validation', {
+  certificateArn: certificate.arn,
+  validationRecordFqdns: [certificateValidationRecord.fqdn],
+}, { provider: usEast1 })
+
+const cloudfrontOAI = new aws.cloudfront.OriginAccessIdentity('oai', {
+  comment: `OAI for ${domain}`,
+})
+
+const s3CanonicalUserId = cloudfrontOAI.iamArn
+
+const bucketPolicyUpdated = new aws.s3.BucketPolicy('bucket-policy-cf', {
+  bucket: siteBucket.id,
+  policy: pulumi.jsonStringify({
+    Version: '2012-10-17',
+    Statement: [
+      {
+        Sid: 'AllowCloudFrontServicePrincipalReadOnly',
+        Effect: 'Allow',
+        Principal: {
+          Service: 'cloudfront.amazonaws.com',
+        },
+        Action: 's3:GetObject',
+        Resource: pulumi.interpolate`arn:aws:s3:::${siteBucket.id}/*`,
+        Condition: {
+          StringEquals: {
+            'AWS:SourceArn': pulumi.interpolate`arn:aws:cloudfront::${aws.getCallerIdentityOutput().accountId}:distribution/*`,
+          },
+        },
+      },
+    ],
+  }),
+})
+
+const distribution = new aws.cloudfront.Distribution('axit-cf', {
+  enabled: true,
+  aliases: [domain],
+  origins: [{
+    originId: siteBucket.id,
+    domainName: websiteConfig.websiteEndpoint,
+    customOriginConfig: {
+      httpPort: 80,
+      httpsPort: 443,
+      originProtocolPolicy: 'http-only',
+      originSslProtocols: ['TLSv1.2'],
+    },
+  }],
+  defaultRootObject: 'index.html',
+  defaultCacheBehavior: {
+    targetOriginId: siteBucket.id,
+    viewerProtocolPolicy: 'redirect-to-https',
+    allowedMethods: ['GET', 'HEAD'],
+    cachedMethods: ['GET', 'HEAD'],
+    forwardedValues: {
+      queryString: false,
+      cookies: {
+        forward: 'none',
+      },
+    },
+  },
+  priceClass: 'PriceClass_All',
+  viewerCertificate: {
+    acmCertificateArn: certificateValidation.certificateArn,
+    sslSupportMethod: 'sni-only',
+    minimumProtocolVersion: 'TLSv1.2_2021',
+  },
+  restrictions: {
+    geoRestriction: {
+      restrictionType: 'none',
+    },
+  },
+}, { provider: usEast1 })
+
+const record = new aws.route53.Record('axit-record-a', {
   zoneId: hostedZone.zoneId,
   name: domain,
-  type: 'CNAME',
+  type: 'A',
   aliases: [{
-    name: websiteConfig.websiteEndpoint,
-    zoneId: siteBucket.hostedZoneId,
+    name: distribution.domainName,
+    zoneId: distribution.hostedZoneId,
     evaluateTargetHealth: false,
   }],
 })
 
-export const websiteUrl = pulumi.interpolate`http://${websiteConfig.websiteEndpoint}`
+const aaaaRecord = new aws.route53.Record('axit-record-aaaa', {
+  zoneId: hostedZone.zoneId,
+  name: domain,
+  type: 'AAAA',
+  aliases: [{
+    name: distribution.domainName,
+    zoneId: distribution.hostedZoneId,
+    evaluateTargetHealth: false,
+  }],
+})
+
+export const websiteUrl = pulumi.interpolate`https://${domain}`
 export const bucketName = siteBucket.id
 export const nameservers = hostedZone.nameServers
+export const distributionId = distribution.id
