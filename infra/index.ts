@@ -118,15 +118,10 @@ const bucketPolicyUpdated = new aws.s3.BucketPolicy('bucket-policy-cf', {
         Sid: 'AllowCloudFrontServicePrincipalReadOnly',
         Effect: 'Allow',
         Principal: {
-          Service: 'cloudfront.amazonaws.com',
+          AWS: cloudfrontOAI.iamArn,
         },
         Action: 's3:GetObject',
         Resource: pulumi.interpolate`arn:aws:s3:::${siteBucket.id}/*`,
-        Condition: {
-          StringEquals: {
-            'AWS:SourceArn': pulumi.interpolate`arn:aws:cloudfront::${aws.getCallerIdentityOutput().accountId}:distribution/*`,
-          },
-        },
       },
     ],
   }),
@@ -137,12 +132,9 @@ const distribution = new aws.cloudfront.Distribution('axit-cf', {
   aliases: [domain],
   origins: [{
     originId: siteBucket.id,
-    domainName: websiteConfig.websiteEndpoint,
-    customOriginConfig: {
-      httpPort: 80,
-      httpsPort: 443,
-      originProtocolPolicy: 'http-only',
-      originSslProtocols: ['TLSv1.2'],
+    domainName: siteBucket.bucketRegionalDomainName,
+    s3OriginConfig: {
+      originAccessIdentity: cloudfrontOAI.cloudfrontAccessIdentityPath,
     },
   }],
   defaultRootObject: 'index.html',
