@@ -29,6 +29,9 @@ body
   @media ( min-width 1200px )
     width 1130px
 
+.row
+  width 100%
+
 .ax
   font-weight 700
   color white
@@ -95,9 +98,6 @@ h4
   font-family $open-sans
   font-size 14px
   font-weight 700
-
-ul
-  margin-top 42px
 
 button
   border 2px solid white
@@ -297,24 +297,33 @@ header #download-btn
 /* --- Social Media section --- */
 
 #brand-bar
-  box-shadow 0 0.866px 3px 0 #000000A0
+  box-shadow 0 0.866px 3px 0 #0000004A
   position relative
   z-index 500
 
 #brand-bar .container
   padding 0 0 0 27px
 
-#brand-bar .col-lg-4
-  padding 16px 0
+#brand-bar .row
+  display flex
+  align-items center
+  height 106px
+
+#brand-bar .row > div
+  width 36%
+  margin-top -3px
 
 #brand-bar ul
-  padding 28px
-  padding-bottom 29px
-  padding-right 0
+  width 64%
+  display flex
+  justify-content space-between
+  list-style-type none
   margin 0
+  padding 0
+  padding-right 40px
 
-#brand-bar li
-  padding 0 18px
+#brand-bar i:before
+  vertical-align middle
 
 #brand-bar .fa
   font-size 48px
@@ -325,6 +334,9 @@ header #download-btn
 
 #brand-bar p
   margin-bottom 0
+
+#brand-bar a
+  display inline-flex
 
 #brand-bar h3:after
   display none
