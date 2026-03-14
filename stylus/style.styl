@@ -170,7 +170,7 @@ input, textarea
 
   color white
   opacity 0.69
-  &:hover
+  &:hover, &:focus
     color white
 
 .navbar-brand
@@ -325,9 +325,10 @@ header #download-btn
 #brand-bar i:before
   vertical-align middle
 
-#brand-bar .fa
+#brand-bar i.fa
   font-size 48px
   color #c9c9c9
+  transition color 0.1s ease
 
   &:hover
     color #ddd
@@ -337,6 +338,8 @@ header #download-btn
 
 #brand-bar a
   display inline-flex
+  &:hover, &:focus
+    text-decoration none
 
 #brand-bar h3:after
   display none
