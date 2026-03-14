@@ -187,5 +187,4 @@ const aaaaRecord = new aws.route53.Record('axit-record-aaaa', {
 
 export const websiteUrl = pulumi.interpolate`https://${domain}`
 export const bucketName = siteBucket.id
-export const nameservers = hostedZone.nameServers
 export const distributionId = distribution.id
