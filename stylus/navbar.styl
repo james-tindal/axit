@@ -1,0 +1,89 @@
+
+.navbar
+  background-color black
+  height 70px
+
+  font-family $open-sans
+  font-size 14px
+  font-weight 600
+
+.navbar .container
+  display flex
+  align-items center
+  justify-content space-between
+  gap 5%
+
+.navbar .brand
+  font-family $open-sans
+  font-size 38px
+  transform translateY(-1px)
+
+.navbar ul
+  list-style-type none
+  box-sizing content-box
+  display flex
+  justify-content space-between
+  max-width 440px
+  width 100%
+
+.navbar li > a
+  text-decoration none
+  color white
+  transition opacity 0.1s ease
+  opacity 0.69
+  &:hover
+    opacity: .79
+
+.navbar button.mobile-menu-toggle
+  display none
+  cursor pointer
+
+  background transparent
+  color white
+  border none
+  transition opacity 0.1s ease
+  &:hover
+    opacity .9
+
+@media (max-width: 523px)
+  .navbar button.mobile-menu-toggle
+    display block
+    padding 22px
+    margin -22px
+
+  .navbar ul
+    background black
+    display flex
+    flex-direction column
+    position absolute
+    width unset
+    top 70px
+    right 0
+    padding-bottom 7.5px
+
+    clip-path inset(0 0 100% 0)
+    transition clip-path 300ms ease
+
+  .navbar ul.open
+    overflow hidden
+    clip-path inset(0 0 0 0)
+    transition clip-path 300ms ease
+
+  .navbar ul a
+    line-height 40px
+    padding-left 15px
+    padding-right: 15px
+
+
+@keyframes expand
+  from 
+    clip-path inset(0 0 0 0)
+  to 
+    clip-path inset(0 0 100% 0)
+
+@keyframes collapse
+  from 
+    clip-path inset(0 0 100% 0)
+  to 
+    clip-path inset(0 0 0 0)
+  
