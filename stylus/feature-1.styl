@@ -1,13 +1,20 @@
 /* --- Feature 1 - tabs section --- */
 
-#feature-one
+section#feature-one
   background-color #f1f1f1
-  img
-    float right
-    margin-top 20px
+  padding 115px 0
 
-[tab-selection]
-  padding-left 7px
+section#feature-one .container
+  display flex
+  justify-content space-between
+  gap 7.6%
+  align-items center
+
+section#feature-one img
+  margin-top 20px
+  height auto
+  width 1055px
+  min-width 200px
 
 [select-tab]
   height 110px
@@ -32,9 +39,16 @@
 [select-tab].active
   background-color $highlight
 
+[tabs]
+  display grid
+  align-items center
+
+@media (max-width: 825px)
+  section#feature-one img
+    display none
+  [tabs]
+    padding-right 2%
+
 [tab-page]
-  position absolute
-  transition:opacity 0.8s ease-in
-  margin-left 17px
-  margin-right 23px
-  margin-top 3px
+  grid-area 1 / 1
+  transition opacity 0.8s ease-in
