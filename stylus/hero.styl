@@ -1,6 +1,5 @@
 
 section#hero
-  height 641px
   padding-bottom 110px
   padding-top 110px
 
@@ -10,11 +9,30 @@ section#hero
   background-size cover
   color white
 
+section#hero .container
+  display flex
+  align-items center
+  justify-content space-between
+  gap 20px
+
+@media (max-width 800px)
+  section#hero .container
+    flex-direction column
+    gap 80px
+
+  section#hero #trial-form
+    width 100%
+    max-width 525px
+    min-width unset
+
+
+section#hero .left
+  max-width 525px
+
 section#hero .brand
   display block
-  font-family $open-sans
 
-  font-size 86px
+  font-size 84px
   line-height 0.65
 
   margin-bottom 30px
@@ -23,7 +41,8 @@ section#hero .brand
   font-family $raleway
   text-transform uppercase
   line-height 1.18
-  letter-spacing -0.3px
+  font-weight 400
+  font-size 36px
 
 #sub-heading:after
   display block
@@ -36,18 +55,16 @@ section#hero .brand
   content '' 
 
 specialp()
-  color rgba(255, 255, 255, 0.6)
+  opacity .7
   font-family $raleway
-  font-weight 200
+  font-weight 300
   font-size 16px
   line-height 1.438
   margin-bottom 10px
 
 section#hero p
   specialp()
-
-section#hero p.row
-  padding-left 17px
+  max-width 92%
 
 section#hero #download-btn
   margin-top 32px
@@ -57,18 +74,18 @@ section#hero #download-btn
 
 /* --- Trial Form --- */
 
-@media ( min-width 992px )
-  .trial-form-col
-    padding-left 2px
-    padding-right 16px
-
 #trial-form
   background-color white
   border-radius 8px
   margin-top 30px
+  min-width 360px
 
-.form
-  padding 11px 38px 10px
+#trial-form .fields
+  padding 20px 38px 34px
+  display flex
+  flex-direction column
+  justify-content space-around
+  height 254px
 
 
 #trial-form h3
@@ -96,4 +113,6 @@ section#hero #download-btn
 
   background-color $highlight-light
   font-weight 600
-  line-height 36px
+  line-height 54px
+  color white
+  font-size 15px
