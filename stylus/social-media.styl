@@ -1,47 +1,54 @@
 
-#brand-bar
+section#social-media
   box-shadow 0 0.866px 3px 0 #0000004A
   position relative
-  z-index 500
+  z-index 1
 
-#brand-bar .container
-  padding 0 0 0 27px
-
-#brand-bar .row
+section#social-media .container
   display flex
   align-items center
-  height 106px
+  padding 17.8px 30px
 
-#brand-bar .row > div
-  width 36%
-  margin-top -3px
+section#social-media .left
+  transform translateY(-2px)
+  width 36.4%
 
-#brand-bar ul
-  width 64%
+section#social-media ul
+  width 63.6%
   display flex
-  justify-content space-between
+  justify-content center
+  flex-wrap wrap
   list-style-type none
   margin 0
   padding 0
-  padding-right 40px
+  transform translateX(10px)
 
-#brand-bar i:before
+section#social-media li
+  min-width calc(100% / 7)
+  text-align center
+
+
+@media(max-width: 960px)
+  section#social-media li
+    width 25%
+    line-height .5
+
+section#social-media i:before
   vertical-align middle
 
-#brand-bar i.fa
+section#social-media i.fa
   font-size 48px
   color #c9c9c9
 
   &:hover
     color #ddd
 
-#brand-bar p
+section#social-media p
   margin-bottom 0
 
-#brand-bar a
+section#social-media a
   display inline-flex
-  &:hover, &:focus
-    text-decoration none
+  text-decoration none
 
-#brand-bar h3:after
+section#social-media h3:after
   display none
