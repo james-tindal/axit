@@ -11,7 +11,7 @@
 
   const filterElementNodes = nodeList => filter( node => node.nodeType === 1, nodeList )
 
-  const show = ( page, bool = true ) => page.style.opacity = page.style.zIndex = Number( !!bool )
+  const show = ( page, bool = true ) => page.style.opacity = Number( !!bool )
   const hide = ( page ) => show( page, false )
 
   const tabSelection = document.querySelector( '[ tab-selection ]' )

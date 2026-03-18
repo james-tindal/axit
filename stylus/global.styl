@@ -127,7 +127,6 @@ input, textarea
   width 100%
 
   padding 6px 12px 
-  // line-height 2.25
   border-bottom 1px solid #d2d2d2
 
   font-size 14px
@@ -143,3 +142,26 @@ input, textarea
 
 i.fa
   transition color 0.1s ease
+
+.scroll-top
+  position sticky
+  top calc(100vh - 52px)
+  z-index 1
+  a
+    position absolute
+    right 30px
+    padding 10.25px 13px
+    background-color white
+    border-radius 6px
+    border 1px solid grey
+    color $highlight
+    margin -10px
+    display block
+
+  i:before
+    line-height 0
+    display block
+
+  @media (min-width 768px)
+    display none
+  
