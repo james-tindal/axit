@@ -2,18 +2,35 @@
 /* --- Testimonials section --- */
 
 #reviews
-    padding 99px 0 101px
-
-#reviews .container
-  padding 0
-  @media ( min-width 1200px )
-    width 1148px
+  padding 100px 0
 
 #reviews h2
   letter-spacing -0.4px
 
-#reviews p
-  padding-bottom 33px
+#reviews .testimonials
+  display flex
+  gap 20px
+
+.testimonial img
+  border-radius 50%
+  height 70px
+  width 70px
+
+  vertical-align middle
+  float left
+  padding-left 2px
+
+.testimonial span
+  display block
+
+.testimonial > span
+  padding 11px 0 0 88px
+
+.name
+  color #2d2d2d
+  font-weight 700
+  font-size 20px
+  padding-bottom 1px
 
 q
   display block
@@ -43,27 +60,3 @@ q:after
   border-color #f3f3f3 transparent transparent transparent
 
   content ''
-
-.testimonial
-  padding 0 60px
-
-.testimonial img
-  border-radius 50%
-  height 70px
-  width 70px
-
-  vertical-align middle
-  float left
-  padding-left 2px
-
-.testimonial span
-  display block
-
-.testimonial > span
-  padding 11px 0 0 88px
-
-.name
-  color #2d2d2d
-  font-weight 700
-  font-size 20px
-  padding-bottom 1px
