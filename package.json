@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "mkdir -p public/css && stylus stylus/index.styl -o public/css/ --print --sourcemap > public/css/style.css",
-    "build:js": "mkdir -p public/js && esbuild js/entry.js --bundle --outfile=public/js/all.js --target=es2015 --sourcemap",
+    "build:css": "rm -rf public/css && mkdir -p public/css && stylus stylus/index.styl -o public/css/ --print --sourcemap > public/css/style.css",
+    "build:js": "rm -rf public/js && mkdir -p public/js && esbuild js/entry.js --bundle --outfile=public/js/all.js --target=es2015 --sourcemap",
     "build": "npm run build:css && npm run build:js",
     "watch:css": "onchange 'stylus/**/*.styl' -- npm run build:css",
     "watch:js": "onchange 'js/**/*.js' -- npm run build:js",
