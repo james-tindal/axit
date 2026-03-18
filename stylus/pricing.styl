@@ -2,7 +2,7 @@
 /* --- Pricing Options section --- */
 
 #pricing
-  padding 99px 0 96px
+  padding 100px 0
   
   background-color #f1f1f1
   text-align center
@@ -10,15 +10,13 @@
 #pricing p
   padding-bottom 58px
 
-#pricing .container
-  padding 0 5px
+#pricing .pricing-boxes
+  display flex
+  align-items flex-end
+  gap 3.6%
 
-.pricing-box:first-of-type
-.pricing-box:last-of-type
-  margin-top 35px
-
-.pricing-box
-  padding 0 20px
+#pricing .pricing-box
+  width calc(100% / 3)
 
 .pricing-box *
   display block
