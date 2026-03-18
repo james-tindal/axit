@@ -1,55 +1,27 @@
-(()=>{
+(() => {
+  'use strict'
 
-  const filter = ( predicate, obj ) => {
-    let result = []
+  const tabs = [...document.querySelectorAll('#feature-one .tab')]
+  const pages = [...document.querySelectorAll('#feature-one .page')]
 
-    for( let key in obj )
-      predicate( obj[key] ) && result.push( obj[key] )
-
-    return result
+  function deselectAll() {
+    for (const node of [...tabs, ...pages])
+      node.classList.remove('active')
   }
 
-  const filterElementNodes = nodeList => filter( node => node.nodeType === 1, nodeList )
-
-  const show = ( page, bool = true ) => page.style.opacity = Number( !!bool )
-  const hide = ( page ) => show( page, false )
-
-  const tabSelection = document.querySelector( '[ tab-selection ]' )
-  const tabSelectors = filterElementNodes( tabSelection.childNodes )
-  const tabSelectorsK = Object.keys(tabSelectors)
-
-  const removeActiveClass = i => tabSelectors[i].classList.remove( 'active' )
-
-  const highlightSelector = target => { 
-    tabSelectorsK.forEach( removeActiveClass )
-    target.classList.add( 'active' )
+  function makeActive(...nodes) {
+    for (const node of nodes)
+      node.classList.add('active')
   }
 
-  const tabPages = filterElementNodes
-    ( document.querySelector( '[ tabs ]' ).childNodes )
-
-  const showPage = ( target ) => {
-    const pageNum = target.getAttribute( 'select-tab' )
-    const page = tabPages.filter( n => n.getAttribute( 'tab-page' ) === pageNum )[0]
-
-    tabPages.map( page => hide( page ) )
-    show( page )
+  function select(tab) {
+    const index = tabs.indexOf(tab)
+    const page = pages[index]
+    deselectAll()
+    makeActive(tab, page)
   }
 
-  const switchTab = ({ target }) => {
-    if( ! target.hasAttribute( 'select-tab' ) ) return
-    highlightSelector( target )
-    showPage( target )
-  }
-
-
-  tabPages.map( page => {
-    hide( page )
-    page.removeAttribute( 'hidden' )
-  })
-
-  show( tabPages[0] )
-
-  tabSelection.addEventListener( 'click', switchTab )
+  for (const tab of tabs)
+    tab.addEventListener('click', ({ target }) => select(target))
 
 })()

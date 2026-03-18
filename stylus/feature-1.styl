@@ -16,7 +16,7 @@ section#feature-one img
   width 1055px
   min-width 200px
 
-[select-tab]
+section#feature-one .tab
   height 110px
   width 110px
   margin 1px
@@ -34,21 +34,25 @@ section#feature-one img
   &:last-of-type
     border-radius 0px 0px 3px 3px
 
-  transition background-color 0.8s ease-in
+  transition background-color 0.3s ease-in
 
-[select-tab].active
+section#feature-one .tab.active
   background-color $highlight
 
-[tabs]
+section#feature-one .pages
   display grid
   align-items center
+
+section#feature-one .page
+  grid-area 1 / 1
+  transition opacity 0.3s ease-in
+  opacity 0
+
+section#feature-one .page.active
+  opacity 1
 
 @media (max-width 825px)
   section#feature-one img
     display none
   [tabs]
     padding-right 2%
-
-[tab-page]
-  grid-area 1 / 1
-  transition opacity 0.8s ease-in
