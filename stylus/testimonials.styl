@@ -10,29 +10,46 @@
 #reviews .testimonials
   display flex
   gap 20px
+  overflow-x auto
+  scroll-snap-type x mandatory
+  scrollbar-width none
+  overscroll-behavior-x contain
+  scroll-behavior smooth
 
-.testimonial img
+  &::-webkit-scrollbar
+    width 0
+  
+
+#reviews .testimonial
+  flex 0 0 calc((100% - 2*20px) / 3)
+  scroll-snap-align center
+  pointer-events none
+  user-select none
+
+#reviews .testimonial *
+  pointer-events none
+
+#reviews .testimonial img
   border-radius 50%
   height 70px
   width 70px
 
-  vertical-align middle
   float left
   padding-left 2px
 
-.testimonial span
+#reviews .testimonial span
   display block
 
-.testimonial > span
+#reviews .testimonial > span
   padding 11px 0 0 88px
 
-.name
+#reviews .name
   color #2d2d2d
   font-weight 700
   font-size 20px
   padding-bottom 1px
 
-q
+#reviews q
   display block
   border-radius 4px
   padding 21px 12px 26px
@@ -46,9 +63,9 @@ q
   letter-spacing 0.6px
   line-height 17px
 
-q:before
+#reviews q:before
   display none
-q:after
+#reviews q:after
   width 0
   height 0
   position absolute
@@ -60,3 +77,11 @@ q:after
   border-color #f3f3f3 transparent transparent transparent
 
   content ''
+
+.drag-to-scroll
+  cursor grab
+
+.drag-to-scroll.dragging
+  cursor grabbing
+  // scroll-snap-type none !important
+  // scroll-behavior auto !important

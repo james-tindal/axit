@@ -12,6 +12,16 @@ $raleway = Raleway, Helvetica, Arial, sans-serif
   padding 0
 }
 
+h1, h2, h3
+  text-wrap balance
+
+a[href]
+  text-decoration none
+
+button
+  cursor pointer
+  font-size unset
+
 body, button, input, textarea
   font-family $open-sans
 
@@ -101,24 +111,32 @@ h4
   font-size 14px
   font-weight 700
 
-.btn-white-border, .btn-orange
+.btn-white, .btn-orange
   font-size 15px
   margin-top 31px
   padding 9px 30px
   color white
   font-weight 600
+  transition background-color .1s
 
-.btn-white-border
+.btn-white
   border 2px solid white
   background-color transparent
+  
+  &:hover
+    background-color transparentify(white, .2)
 
 .btn-orange
   background-color $highlight
   font-weight 600
+  display inline-block
 
   border 0
   border-radius 3px
   box-shadow: 0.5px 0.866px 3px 0px #0005
+
+  &:hover
+    background-color $highlight-light
 
 input, textarea
   border none
@@ -146,7 +164,7 @@ i.fa
 .scroll-top
   position sticky
   top calc(100vh - 52px)
-  z-index 1
+  z-index 2
   a
     position absolute
     right 30px
