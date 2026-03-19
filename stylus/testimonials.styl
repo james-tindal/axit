@@ -18,13 +18,18 @@
 
   &::-webkit-scrollbar
     width 0
-  
 
 #reviews .testimonial
-  flex 0 0 calc((100% - 2*20px) / 3)
-  scroll-snap-align center
+  scroll-snap-align start
   pointer-events none
   user-select none
+
+  flex 0 0 calc((100% - 2*20px) / 3)
+  @media (max-width 650px)
+    flex 0 0 calc((100% - 20px) / 2)
+
+  @media (max-width 465px)
+    flex 0 0 100%
 
 #reviews .testimonial *
   pointer-events none
