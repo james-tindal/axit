@@ -7,8 +7,9 @@ section#feature-one
 section#feature-one .container
   display flex
   justify-content space-between
-  gap 7.6%
   align-items center
+  gap clamp(0px, 4vw, 7.6%)
+  padding 0 clamp(0px, 4vw, 30px)
 
 section#feature-one img
   margin-top 20px
@@ -17,10 +18,12 @@ section#feature-one img
   min-width 200px
 
 section#feature-one .tab
-  height 110px
-  width 110px
+  height clamp(0px, 27vw, 110px)
+  width clamp(0px, 27vw, 110px)
   margin 1px
-  padding 45px 34px 45px 35px
+  display flex
+  justify-content center
+  align-items center
 
   color white
   font-weight 600
