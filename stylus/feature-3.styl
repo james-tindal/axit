@@ -24,3 +24,26 @@
 #feature-three img
   box-shadow 0px 20px 50px 3px #bababa
   width 100%
+
+
+// for when js moves the image into the text
+#feature-three .left img
+  float right
+  width 50%
+  margin-left 2%
+  margin-bottom 5px
+
+// only on browsers that support :has
+#feature-three:has(.left img)
+  .container
+    gap 0
+
+  .left
+    width 100%
+
+@media (max-width 655px)
+  #feature-three .container
+    gap 0
+
+  #feature-three .left
+    width 100%
