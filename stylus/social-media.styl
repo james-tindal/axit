@@ -33,6 +33,25 @@ section#social-media li
     width 25%
     line-height .5
 
+@media(max-width 450px)
+  section#social-media li
+    width calc(100% / 3)
+  
+  section#social-media .left
+    min-width 140px
+
+@media(max-width 450px) and (min-width 376px)
+  section#social-media li
+    &:nth-child(1), &:nth-child(2)
+      width 34%
+
+@media(max-width 375px)
+  section#social-media li
+    width 50%
+
+    &:nth-child(3), &:nth-child(4)
+      transform translateX(8.25px)
+
 section#social-media i:before
   vertical-align middle
 
